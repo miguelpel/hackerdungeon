@@ -1,0 +1,79 @@
+.fonts p {
+	font-size: 2rem;
+	color: white;
+}
+
+.mono {
+	font-family: monospace;
+	font-weight: normal;
+}
+
+.monoBold {
+	font-family: monospace;
+	font-weight: bold;
+}
+
+.sketch {
+	font-family: 'Sketch';
+	font-weight: normal;
+}
+
+.sketchBold {
+	font-family: 'Sketch';
+	font-weight: bold;
+}
+
+.stylish {
+	font-family: 'Stylish';
+	font-weight: normal;
+}
+
+.robotoThin {
+	font-family: 'Roboto';
+	font-weight: 100;
+}
+
+.robotoLight {
+	font-family: 'Roboto';
+	font-weight: 200;
+}
+
+.roboto {
+	font-family: 'Roboto';
+	font-weight: 300;
+}
+
+.robotoMedium {
+	font-family: 'Roboto';
+	font-weight: 400;
+}
+
+.robotoBold {
+	font-family: 'Roboto';
+	font-weight: 500;
+}
+
+.robotoBlack {
+	font-family: 'Roboto';
+	font-weight: 700;
+}
+
+.roboto_SlabThin {
+	font-family: 'Roboto_Slab';
+	font-weight: 100;
+}
+
+.roboto_SlabLight {
+	font-family: 'Roboto_Slab';
+	font-weight: 200;
+}
+
+.roboto_Slab {
+	font-family: 'Roboto_Slab';
+	font-weight: 400;
+}
+
+.roboto_SlabBold {
+	font-family: 'Roboto_Slab';
+	font-weight: 700;
+}

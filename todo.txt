@@ -1,3 +1,6 @@
+- Migrate the Map data.
+
+- boothstrap Firebase
 
 - put the eval into 'Game' scope?
 document.getElementsByTagName("BODY")[0].style.backgroundColor = "red"

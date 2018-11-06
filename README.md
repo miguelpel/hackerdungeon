@@ -35,3 +35,9 @@ npm run build
 (for now, it links to here.)
 
 [Link](https://github.com/miguelpel/hackerdungeon)
+
+#### Link to Adam Pritchard's Markdown CheatSheet
+
+Because it's the best I found so far.
+
+[Link](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
