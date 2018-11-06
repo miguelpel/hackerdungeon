@@ -1,0 +1,15 @@
+
+- put the eval into 'Game' scope?
+document.getElementsByTagName("BODY")[0].style.backgroundColor = "red"
+
+- creates the Game object, and allow the chanrginf of rooms.
+
+- create dungeons,
+
+- create a backup system : http://dhmholley.co.uk/incrementals.html
+
+the function explode:
+Player.prototype.explode = function(ennemy){
+    ennemy.lifePoints = -1;
+    console.log(`Player exploded ${ennemy.name}`)
+}
