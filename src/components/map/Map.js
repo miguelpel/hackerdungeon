@@ -8,7 +8,7 @@ class Map extends Component {
 	};
 
 	render() {
-		return <pre>{this.state.layout}</pre>;
+		return <div>{this.state.layout}</div>;
 	}
 }
 
