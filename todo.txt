@@ -1,4 +1,6 @@
-- Migrate the Map data.
+- add player to the map
+
+- create a zoom mode for the map
 
 - boothstrap Firebase
 
