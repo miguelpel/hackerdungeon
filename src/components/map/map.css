@@ -1,0 +1,46 @@
+.pulse {
+        -moz-animation: pulse .8s ease-in-out;
+        -moz-animation-iteration-count: infinite;
+        -webkit-animation: pulse .8s ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        -ms-animation: pulse .8s ease-in-out;
+        -ms-animation-iteration-count: infinite;
+        animation: pulse .8s  ease-in-out;
+        animation-iteration-count: infinite;
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+        color: white;
+      }
+      100% {
+        color: red;
+      }
+    }
+  
+  @-moz-keyframes pulse {
+    0% {
+        color: white;
+      }
+      100% {
+        color: red;
+      }
+  }
+  
+  @-ms-keyframes pulse {
+    0% {
+        color: white;
+      }
+      100% {
+        color: red;
+      }
+  }
+
+  @keyframes pulse {
+    0% {
+        color: white;
+      }
+      100% {
+        color: red;
+      }
+    }
