@@ -113,5 +113,45 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      /* Get the documentElement (<html>) to display the page in fullscreen */
+      var elem = document.documentElement;
+      var fullscreen = false;
+
+      /* View in fullscreen */
+      function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+        fullscreen = true;
+      }
+      
+      /* Close fullscreen */
+      function closeFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+        fullscreen = false;
+      }
+
+      function toggleFScreen() {
+        if(!fullscreen) openFullscreen();
+        else closeFullscreen();
+      }
+
+      document.body.addEventListener("dblclick", toggleFScreen)
+      </script>
   </body>
 </html>

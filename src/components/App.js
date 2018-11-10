@@ -7,9 +7,9 @@ import Fonts from '../cheatsheets/Fonts';
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<div id="game">
 				<Map />
-				<Fonts />
+				{/* <Fonts /> */}
 			</div>
 		);
 	}
