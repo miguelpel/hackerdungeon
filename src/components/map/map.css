@@ -45,13 +45,11 @@
 	}
 }
 
-/* #mapContainerSpan {
-	display: block;
-	line-height: 12px;
-	font-size: 12px;
-	font-weight: bold;
-	white-space: pre;
-	font-family: monospace;
-	color: black;
-	background: rgba(0, 0, 0, 0);
-} */
+#mapContainerSpan span {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Chrome and Opera */
+}

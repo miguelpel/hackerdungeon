@@ -3,60 +3,99 @@ import React, { Component } from 'react';
 import './map.css';
 
 import { mapLayout } from './layoutData';
+import { getSpanAt, checkIfWater, setPlayerTo, removePlayerFrom, getCharAndColorOf } from './mapFunctions';
 
 class Map extends Component {
 	state = {
 		layout: mapLayout,
-		playerPosition: this.props.playerPosition ? this.props.playerPosition : { x: 32, y: 11 },
+		playerPosition: this.props.playerPosition ? this.props.playerPosition : { x: 31, y: 11 },
 		rows: 56,
 		cols: 160,
-		spans: null,
-		currentCharAndColor: null,
-		w: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-		h: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+		currentCharAndColor: null
 	};
 
 	componentDidMount = () => {
-		window.addEventListener('resize', this.resize);
 		window.addEventListener('keydown', this.keyHandling);
-		const span = document.getElementById('mapContainerSpan');
-		const spans = span.getElementsByTagName('SPAN');
-		this.setState(
-			{
-				spans
-			},
-			this.spawnPlayer
-		);
+		this.spawnPlayer();
 	};
 
-	resize = () => {
-		let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		this.setState({
-			w,
-			h
-		});
+	componentWillUnmount = () => {
+		// Remove event listener on compenent unmount
+		window.removeEventListener('keydown', this.keyHandling);
 	};
 
-	// componentWillUnmount = () => {
-	// 	// Remove event listener on compenent unmount
-	// 	window.removeEventListener('keyup', this.keyHandling);
-	// };
+	keyHandling = e => {
+		// Handle event
+		e = e || window.event;
+		if (e.keyCode == '38') {
+			// console.log('up arrow');
+			this.move(this.state.playerPosition, {
+				x: this.state.playerPosition.x,
+				y: this.state.playerPosition.y - 1
+			});
+		} else if (e.keyCode == '40') {
+			// console.log('down arrow');
+			this.move(this.state.playerPosition, {
+				x: this.state.playerPosition.x,
+				y: this.state.playerPosition.y + 1
+			});
+		} else if (e.keyCode == '37') {
+			// console.log('left arrow');
+			this.move(this.state.playerPosition, {
+				x: this.state.playerPosition.x - 1,
+				y: this.state.playerPosition.y
+			});
+		} else if (e.keyCode == '39') {
+			// console.log('right arrow');
+			this.move(this.state.playerPosition, {
+				x: this.state.playerPosition.x + 1,
+				y: this.state.playerPosition.y
+			});
+		}
+		e.preventDefault();
+	};
 
-	// keyHandling = e => {
-	// 	// Handle event
-	// 	console.log('Key code: ' + e.keyCode);
-	// 	e.preventDefault();
-	// };
+	move = (fromPosition, toPosition) => {
+		console.log(`from x: ${fromPosition.x} y: ${fromPosition.y}`);
+		console.log(`to x: ${toPosition.x} y: ${toPosition.y}`);
+		if (checkIfWater(toPosition)) {
+			this.setState(
+				{
+					playerPosition: toPosition
+				},
+				e => console.log(this.state.playerPosition)
+			);
+			let oldSpan = getSpanAt(fromPosition);
+			let newSpan = getSpanAt(toPosition);
+			let currentCharAndColor = getCharAndColorOf(newSpan);
+			setPlayerTo(newSpan);
+			removePlayerFrom(oldSpan, this.state.currentCharAndColor);
+			this.setState({
+				currentCharAndColor
+			});
+		} else {
+			return false;
+		}
+	};
 
-	// spawnPlayer = () => {
-	// 	let newSpan = this.getSpanAt(this.state.playerPosition);
-	// 	let charAndColor = this.getCharAndColorOf(newSpan);
-	// 	this.setPlayerTo(newSpan);
-	// 	this.setState({
-	// 		currentCharAndColor: charAndColor
-	// 	});
-	// };
+	spawnPlayer = () => {
+		if (checkIfWater(this.state.playerPosition)) {
+			// change position of player,
+			//player.position = toPosition;
+			//get the newSpan
+			let newSpan = getSpanAt(this.state.playerPosition);
+			// get the char and color at new position,
+			let currentCharAndColor = getCharAndColorOf(newSpan);
+			// change char and color at next position,
+			setPlayerTo(newSpan);
+			// stock char and color into vaiable.
+			this.setState({
+				currentCharAndColor
+			});
+		} else {
+			return false;
+		}
+	};
 
 	getLayout = () => {
 		// get the layout data
@@ -84,15 +123,18 @@ class Map extends Component {
 	};
 
 	render() {
+		const fS =
+			Math.round(this.props.h / 70) + 'px' < Math.round(this.props.w / 120) + 'px'
+				? Math.round(this.props.h / 70) + 'px'
+				: Math.round(this.props.w / 120) + 'px';
+		console.log(fS);
 		const containerSpanStyle = {
-			width: this.state.w,
-			height: this.state.h,
-			overFlow: 'hidden',
+			width: this.props.w,
+			height: this.props.h,
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between',
-			// lineHeight: '12px',
-			// fontSize: '12px',
+			fontSize: fS,
 			fontWeight: 'bold',
 			whiteSpace: 'pre',
 			fontFamily: 'monospace',

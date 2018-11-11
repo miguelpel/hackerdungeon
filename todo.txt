@@ -1,13 +1,12 @@
-- add player to the map
+- make the player movin' more quickly?
 
-- create a zoom mode for the map
+- player controlling window + design the way to make it move. (values)
 
 - boothstrap Firebase
 
-- put the eval into 'Game' scope?
-document.getElementsByTagName("BODY")[0].style.backgroundColor = "red"
+- installed CodeMirror. Get to use it for the puzzles, with theme: liquidbyte
 
-- creates the Game object, and allow the chanrginf of rooms.
+- creates the Game object, and allow the chanrgins of rooms.
 
 - create dungeons,
 
